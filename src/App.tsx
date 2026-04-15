@@ -1,7 +1,12 @@
 import React, { type FC } from "react"
+import UserList from "./components/UserList"
 
 const App: FC = () => {
-  return <div>App</div>
+  return (
+    <div>
+      <UserList />
+    </div>
+  )
 }
 
 export default App
