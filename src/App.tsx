@@ -1,10 +1,13 @@
-import React, { type FC } from "react"
+import { type FC } from "react"
 import UserList from "./components/UserList"
+import TodoList from "./components/TodoList"
 
 const App: FC = () => {
   return (
     <div>
       <UserList />
+      <hr />
+      <TodoList />
     </div>
   )
 }
