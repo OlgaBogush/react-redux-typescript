@@ -1,11 +1,31 @@
-import React, { type FC } from "react"
-import { useSelector } from "react-redux"
+import { useEffect, type FC } from "react"
+
+import { useTypedSelector } from "./hooks/useTypedSelector"
+import { useActions } from "./hooks/useActions"
 
 const UserList: FC = () => {
-  const a = useSelector((state) => state)
-  console.log(a)
+  const { users, error, loading } = useTypedSelector((state) => state.user)
+  const { fetchUsers } = useActions()
 
-  return <div></div>
+  useEffect(() => {
+    fetchUsers()
+  }, [])
+
+  if (loading) {
+    return <h1>Loading...</h1>
+  }
+
+  if (error) {
+    return <h1>{error}</h1>
+  }
+
+  return (
+    <div>
+      {users.map((item) => (
+        <div key={item.id}>{item.name}</div>
+      ))}
+    </div>
+  )
 }
 
 export default UserList
